@@ -1,0 +1,6 @@
+endpoint: https://eu1.prisma.sh/dzsdal/dzsdal/dev
+datamodel: datamodel.graphql
+#
+# generate:
+#   - generator: typescript-client
+#     output: ./generated/prisma-client/

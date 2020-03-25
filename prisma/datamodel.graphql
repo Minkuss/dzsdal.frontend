@@ -1,0 +1,72 @@
+type Class {
+  id: ID! @id
+  name: String!
+  students: [Student!]!
+  teachers: [Teacher!]!
+}
+
+type Subject {
+  id: ID! @id
+  name: String!
+  tasks: [SubjectTask!]!
+}
+
+type SubjectTask {
+  id: ID! @id
+  name: String!
+  subject: Subject!
+  homeworks: [HomeWork!]! @relation(name: "SubjectTaskHomeWorks")
+}
+
+type HomeWork {
+  id: ID! @id
+
+  subject: Subject!
+  task: SubjectTask! @relation(name: "SubjectTaskHomeWorks")
+  student: Student!
+  teacher: Teacher!
+
+  content: String
+  comments: [HomeWorkComment!]!
+  updatedByStudent: Boolean!
+  updatedByTeacher: Boolean!
+}
+
+enum HomeWorkCommentAuthorRole {
+  STUDENT
+  TEACHER
+}
+
+type HomeWorkComment {
+  id: ID! @id
+  text: String!
+  homework: HomeWork!
+  authorName: String!
+  authorRole: HomeWorkCommentAuthorRole!
+}
+
+type Student {
+  id: ID! @id
+  email: String! @unique
+  password: String!
+
+  firstName: String!
+  patronymic: String!
+  lastName: String!
+
+  class: Class!
+  homeworks: [HomeWork!]!
+}
+
+type Teacher {
+  id: ID! @id
+  email: String! @unique
+  password: String!
+
+  firstName: String!
+  patronymic: String!
+  lastName: String!
+
+  subjects: [Subject!]!
+  classes: [Class!]!
+}
