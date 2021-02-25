@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { useStore } from "effector-react";
 import { Editor, EditorState, RichUtils, ContentState } from "draft-js";
-import { Card, Button, Intent, Alert, Menu, Popover, MenuItem } from "@blueprintjs/core";
+import { Card, Button, Intent, Alert, Menu, Popover, MenuItem, Elevation } from "@blueprintjs/core";
 import { $studentSelectedHomeWork } from "../../effector/studentSelectedHomeWork";
 
 import "draft-js/dist/Draft.css";
@@ -26,7 +26,7 @@ interface ITextEditorProps {
   prop?: boolean;
 }
 
-export const TextEditor: React.FC<ITextEditorProps> = props => {
+export const TextEditor: React.FC<ITextEditorProps> = (props) => {
   const {
     initialState,
     placeholder,
@@ -129,9 +129,11 @@ export const TextEditor: React.FC<ITextEditorProps> = props => {
   return (
     <>
       {selectedHomework
-        ? selectedHomework.status === "checked" && <Card>{selectedHomework.studentContent}</Card>
+        ? selectedHomework.status === "checked" && (
+            <Card elevation={Elevation.FOUR}>{selectedHomework.studentContent}</Card>
+          )
         : true}
-      <Card className={classes.card}>
+      <Card elevation={Elevation.FOUR} className={classes.card}>
         <div className={classes.editor}>
           {!showen && (
             <Popover position="right-bottom" content={UnderlineMenu}>

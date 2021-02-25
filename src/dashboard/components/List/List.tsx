@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from "react";
+import hyperid from "hyperid";
 import {
   Card,
   Button,
@@ -8,10 +9,11 @@ import {
   Popover,
   EditableText,
   Dialog,
+  Elevation,
 } from "@blueprintjs/core";
 import { classes as merge } from "typestyle";
 
-import { Status, UserRole } from "../../types";
+import { Status, UserRole, IHomeWork } from "../../types";
 import { StatusIcon } from "../StatusIcon";
 import * as classes from "./List.styles";
 import { setHomeWorkStatus } from "../../effector/studentChangeStatus";
@@ -42,6 +44,7 @@ export function List<T extends IListItem>(props: IListProps<T>) {
   const [open, setOpen] = useState(false);
   const [error, setError] = useState(false);
   const [text, setText] = useState("");
+  const [homeWorks, setHomeWorks] = useState<IHomeWork[]>([]);
 
   const handleChange = useCallback((value: string) => {
     setText(value);
@@ -88,7 +91,7 @@ export function List<T extends IListItem>(props: IListProps<T>) {
 
   return (
     <>
-      <Card className={merge(classes.list, className)}>
+      <Card elevation={Elevation.FOUR} className={merge(classes.list, className)}>
         {label && (
           <H5 className={classes.label}>
             {label}

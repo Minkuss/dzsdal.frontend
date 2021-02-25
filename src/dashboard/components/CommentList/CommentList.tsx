@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { ID, IComment, UserRole } from "../../types";
-import { Card, Button } from "@blueprintjs/core";
+import { Card, Button, Elevation } from "@blueprintjs/core";
 import * as cn from "./CommentList.styles";
 
 interface ICommentListProps {
@@ -11,10 +11,10 @@ interface ICommentListProps {
 
 export const CommentList: FC<ICommentListProps> = ({ items, onChange, role }) => (
   <div>
-    {items.map(item => (
+    {items.map((item) => (
       <>
         <div className={cn.roleText}>{item.name}</div>
-        <Card className={cn.card}>
+        <Card elevation={Elevation.FOUR} className={cn.card}>
           <div className={cn.commentText} key={item.id}>
             {item.text}
           </div>

@@ -1,6 +1,6 @@
 import React, { FC, useState, useCallback, useEffect } from "react";
 import hyperid from "hyperid";
-import { Card } from "@blueprintjs/core";
+import { Card, Elevation } from "@blueprintjs/core";
 
 import { CommentList } from "../components";
 import { CommentForm, ICommentForm } from "../forms";
@@ -52,9 +52,9 @@ export const StudentComments: FC<IStudentCommentsProps> = ({ className }) => {
   );
 
   const deleteComment = useCallback(
-    id => {
+    (id) => {
       if (selectedHomework) {
-        const newComments = comments.filter(comment => comment.id !== id);
+        const newComments = comments.filter((comment) => comment.id !== id);
         setComments(newComments);
         setHomeWorkComments({
           homeWorkId: selectedHomework.id,
@@ -66,7 +66,7 @@ export const StudentComments: FC<IStudentCommentsProps> = ({ className }) => {
   );
 
   return (
-    <Card className={className}>
+    <Card elevation={Elevation.FOUR} className={className}>
       <CommentForm onSubmit={handleSubmit} />
       <CommentList onChange={deleteComment} role="student" items={comments} />
     </Card>
