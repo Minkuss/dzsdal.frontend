@@ -2,7 +2,7 @@ import React, { useCallback, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { Card } from "@blueprintjs/core";
 // import { useQuery, useMutation, QueryCache, QueryClient, QueryClientProvider } from "react-query";
-import prisma from "../../../lib/prisma";
+// import prisma from "../../../lib/prisma";
 
 import { STUDENT_DASHBOARD_PATH, TEACHER_DASHBOARD_PATH } from "../../../dashboard/router";
 import { ILoginForm, LoginForm } from "../../forms";
