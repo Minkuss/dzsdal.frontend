@@ -1,15 +1,16 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { Card } from "@blueprintjs/core";
-import { useQuery, useMutation, QueryCache, QueryClient, QueryClientProvider } from "react-query";
+// import { useQuery, useMutation, QueryCache, QueryClient, QueryClientProvider } from "react-query";
 import prisma from "../../../lib/prisma";
 
 import { STUDENT_DASHBOARD_PATH, TEACHER_DASHBOARD_PATH } from "../../../dashboard/router";
 import { ILoginForm, LoginForm } from "../../forms";
 import * as classes from "./LoginPage.styles";
+import { populateMockData } from "../../../dashboard/services/init";
 
 // async function fetchStudentRequest() {
-//   const response = await fetch("/api/students");
+//   const response = await fetch("./api/student");
 //   const data = await response.text();
 //   console.log(data);
 //   // const { student } = data;
